@@ -1,6 +1,7 @@
 """Certbot client API."""
 import logging
 import os
+import sys
 import platform
 
 from cryptography.hazmat.backends import default_backend
@@ -240,6 +241,9 @@ class Client(object):
                 auth, self.acme, self.account, self.config.pref_challs)
         else:
             self.auth_handler = None
+        if sys.version_info[:2] == (3, 3):
+            logger.warn("Python 3.3 support will be dropped in the next release"
+                        "of Certbot. Please upgrade your Python version")
 
     def obtain_certificate_from_csr(self, domains, csr, authzr=None):
         """Obtain certificate.
