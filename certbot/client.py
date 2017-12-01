@@ -242,8 +242,8 @@ class Client(object):
         else:
             self.auth_handler = None
         if sys.version_info[:2] == (3, 3):
-            logger.warn("Python 3.3 support will be dropped in the next release"
-                        "of Certbot. Please upgrade your Python version")
+            logger.warning("Python 3.3 support will be dropped in the next release"
+                        "of Certbot - please upgrade your Python version.")
 
     def obtain_certificate_from_csr(self, domains, csr, authzr=None):
         """Obtain certificate.
